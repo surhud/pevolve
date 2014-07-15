@@ -34,7 +34,8 @@ Without any inputs, initializes to Bolshoi cosmology.
 
 :Examples:
 
-    >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> import cosmology as cc;
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> help(a)
 "
 
@@ -47,7 +48,8 @@ Without any inputs, initializes to Bolshoi cosmology.
 
 :Examples:
 
-    >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> import cosmology as cc;
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.Eofz(0.5)
     1.28111279753
 "
@@ -61,7 +63,8 @@ Without any inputs, initializes to Bolshoi cosmology.
 
 :Examples:
 
-    >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> import cosmology as cc;
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.Omega(0.5)
     0.555217060168
 "
@@ -77,7 +80,8 @@ Bryan and Norman 98
 
 :Examples:
 
-    >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> import cosmology as cc;
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.Delta_crit(0.0)
     97.0097792196
 "
@@ -91,7 +95,8 @@ Bryan and Norman 98
 
 :Examples:
 
-    >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> import cosmology as cc;
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.set_cfile('myconcentration.dat')
 "
 
@@ -105,7 +110,8 @@ Bryan and Norman 98
 
 :Examples:
 
-    >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> import cosmology as cc;
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.conc(1.0E13,0.0)
     7.57896671931
 "
@@ -121,7 +127,8 @@ redshift z, output stored in file fileout
 
 :Examples:
 
-    >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> import cosmology as cc;
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.mah_Zhao(1.E11,0.5)
 "
 
@@ -138,7 +145,8 @@ redshift z0 between redshifts z1 and z2, z0<z1<z2
     
 :Examples:
 
-    >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> import cosmology as cc;
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.pe_fraction(1.E11,0.0,1.0,2.0)
     0.614891598653
 "
@@ -159,7 +167,8 @@ defined as Delta with respect to the background density
 
 :Examples:
 
-    >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> import cosmology as cc;
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.getMvir(1.E11,0.0,200.0)
     88953346252.6
 "
@@ -181,7 +190,8 @@ has virial concentration equal to cvir.
 
 :Examples:
 
-    >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> import cosmology as cc;
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.getcDelta(0.0,10.0,200.)
     12.6784160959
 "
@@ -201,7 +211,8 @@ redshift z
 
 :Examples:
 
-    >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> import cosmology as cc;
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.rvir_from_mvir(1.E12,0.0)
     0.20689732071
 "
@@ -225,7 +236,8 @@ as Delta with respect to the background density
 
 :Examples:
 
-    >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> import cosmology as cc;
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.modelNFWhalo_com(1.E12,0.0,200.0)
     [880330641353.4209, 0.198291214519584, 9.765326694230426]
 "
@@ -252,7 +264,8 @@ Delta with respect to the background density
 
 :Examples:
 
-    >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> import cosmology as cc;
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.modelNFWhalo_com(1.E12,0.0,200.0)
     [880330641353.4209, 0.198291214519584, 9.765326694230426, 0.2515830411841534, 12.386409188477131]
 "
@@ -279,7 +292,8 @@ the ratio of its mass to the mass at redshift zstart.
 
 :Examples:
 
-    >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> import cosmology as cc;
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.pevolve_fixed(12.0,1,1.0,0.0)
     [5.019071157921484, 0.585350923353302]
 "
@@ -312,7 +326,8 @@ respect to the background at redshift z
 
 :Examples:
 
-    >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> import cosmology as cc;
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.convertMdelta_Mdeltap(0.0,1.0E12,200.,300.)
     [916906871432.2742, 10.512114412989405]
 "
