@@ -44,10 +44,11 @@ Parameters:
 Examples:
     >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.Eofz(0.5)
+    1.28111279753
 "
 
 %feature("docstring") cosmology::Omega 
-"Returns the matter density at redshift z
+"Returns the matter density parameter at redshift z
 
 Parameters:
     z : Redshift
@@ -55,6 +56,7 @@ Parameters:
 Examples:
     >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.Omega(0.5)
+    0.555217060168
 "
 
 %feature("docstring") cosmology::Delta_crit
@@ -67,7 +69,8 @@ Parameters:
 
 Examples:
     >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
-    >>> a.Delta_crit(0.5)
+    >>> a.Delta_crit(0.0)
+    97.0097792196
 "
 
 %feature("docstring") cosmology::set_cfile 
@@ -85,11 +88,13 @@ Examples:
 "Returns concentration as a function of Mvir and z
 
 Parameters:
+   Mvir : Virial mass in hinv Msun
    z : Redshift
 
 Examples:
     >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
-    >>> a.conc(0.5)
+    >>> a.conc(1.0E13,0.0)
+    7.57896671931
 "
 
 %feature("docstring") cosmology::mah_Zhao
@@ -97,7 +102,7 @@ Examples:
 redshift z, output stored in file fileout
 
 Parameters:
-    M : Virial mass
+    M : Virial mass in hinv Msun
     z : Redshift
 
 Examples:
@@ -110,7 +115,7 @@ Examples:
 redshift z0 between redshifts z1 and z2, z0<z1<z2
 
 Parameters:
-    mvir0 : Virial mass
+    mvir0 : Virial mass in hinv Msun
     z0 : Redshift at which the mvir0 is identified
     z1 : Initial redshift
     z2 : Final redshift
@@ -118,6 +123,7 @@ Parameters:
 Examples:
     >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.pe_fraction(1.E11,0.0,1.0,2.0)
+    0.614891598653
 "
 
 %feature("docstring") cosmology::getMvir 
@@ -125,16 +131,17 @@ Examples:
 defined as Delta with respect to the background density
 
 Parameters:
-    M : Mass defined as Delta times overdense with respect to background density
+    M : Mass (hinv Msun) defined as Delta times overdense with respect to background density
     z : Redshift at which M is identified
     Delta : The overdensity with respect to the background
 
 Returns:
-    Mvir : Virial mass
+    Mvir : Virial mass in hinv Msun
 
 Examples:
     >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.getMvir(1.E11,0.0,200.0)
+    88953346252.6
 "
 
 %feature("docstring") cosmology::getcDelta 
@@ -143,7 +150,7 @@ with respect to the background density at redshift z and which
 has virial concentration equal to cvir.
 
 Parameters:
-    z : Mass defined as Delta times overdense with respect to background density
+    z : Redshift
     cvir : The virial concentration
     Del : The overdensity with respect to the background
 
@@ -153,6 +160,7 @@ Returns:
 Examples:
     >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.getcDelta(0.0,10.0,200.)
+    12.6784160959
 "
 
 %feature("docstring") cosmology::rvir_from_mvir
@@ -160,15 +168,16 @@ Examples:
 redshift z
 
 Parameters:
-    Mvir : Virial mass
+    Mvir : Virial mass in hinv Msun
     z : Redshift
 
 Returns:
-    Rvir : The comoving virial radius
+    Rvir : The comoving virial radius in hinv Mpc
 
 Examples:
     >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.rvir_from_mvir(1.E12,0.0)
+    0.20689732071
 "
 
 %feature("docstring") cosmology::modelNFWhalo_com
@@ -177,18 +186,19 @@ concentration of a halo of mass Mdelta at redshift z, defined
 as Delta with respect to the background density
 
 Parameters:
-    mDel : Mass defined as Delta times overdense with respect to background density
+    mDel : Mass (hinv Msun) defined as Delta times overdense with respect to background density
     z : Redshift
     Delta : The overdensity
 
 Returns:
-    Mvir : The virial mass
-    Rvir : The comoving virial radius
+    Mvir : The virial mass (hinv Msun)
+    Rvir : The comoving virial radius (hinv Mpc)
     cvir : The virial concentration
 
 Examples:
     >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.modelNFWhalo_com(1.E12,0.0,200.0)
+    [880330641353.4209, 0.198291214519584, 9.765326694230426]
 "
 
 %feature("docstring") cosmology::modelNFWhalo_com_ext
@@ -198,20 +208,21 @@ cDelta of a halo of mass Mdelta at redshift z, defined as
 Delta with respect to the background density
 
 Parameters:
-    mDel : Mass defined as Delta times overdense with respect to background density
+    mDel : Mass (hinv Msun) defined as Delta times overdense with respect to background density
     z : Redshift
     Delta : The overdensity
 
 Returns:
-    Mvir : The virial mass
-    Rvir : The comoving virial radius
+    Mvir : The virial mass (hinv Msun)
+    Rvir : The comoving virial radius (hinv Mpc)
     cvir : The virial concentration
-    Rdel : The comoving boundary of halo Delta times overdense with respect to background density
+    Rdel : The comoving boundary of halo Delta times overdense with respect to background density (hinv Mpc)
     cdel : The concentration of halo Delta times overdense with respect to background density
 
 Examples:
     >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.modelNFWhalo_com(1.E12,0.0,200.0)
+    [880330641353.4209, 0.198291214519584, 9.765326694230426, 0.2515830411841534, 12.386409188477131]
 "
 
 %feature("docstring") cosmology::pevolve_fixed
@@ -235,6 +246,7 @@ Returns:
 Examples:
     >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
     >>> a.pevolve_fixed(12.0,1,1.0,0.0)
+    [5.019071157921484, 0.585350923353302]
 "
 
 %feature("docstring") cosmology::setfconc
@@ -252,13 +264,18 @@ respect to the background at redshift z
 
 Parameters:
     z : Redshift
-    Mdelta : Mass defined as Delta times overdense with respect to background density
+    Mdelta : Mass (hinv Msun) defined as Delta times overdense with respect to background density
     Delta : The overdensity
     Deltap : The new overdensity
 
 Returns:
-    Mdeltap : The mass defined as Deltap times overdense with respect to background density
+    Mdeltap : The mass (hinv Msun) defined as Deltap times overdense with respect to background density
     cdeltap : The concentration of halo defined as Deltap times overdense with respect to background density
+
+Examples:
+    >>> a = cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> a.convertMdelta_Mdeltap(0.0,1.0E12,200.,300.)
+    [916906871432.2742, 10.512114412989405]
 "
 
 
