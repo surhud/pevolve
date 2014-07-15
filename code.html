@@ -80,9 +80,16 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="module-cosmology">
-<span id="cosmology-code-documentation"></span><h1>Cosmology code documentation<a class="headerlink" href="#module-cosmology" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
+  <div class="section" id="cosmology-code-documentation">
+<h1>Cosmology code documentation<a class="headerlink" href="#cosmology-code-documentation" title="Permalink to this headline">¶</a></h1>
+<p>All the examples assume that you have set the PYTHONPATH environment variable
+to the installation location of pevolve, and the PATH to the pevolve directory.
+Run the following commands from inside the pevolve directory</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">export </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:<span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/install/lib/python2.7/site-packages
+<span class="nv">$ </span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>
+</pre></div>
+</div>
+<span class="target" id="module-cosmology"></span><dl class="class">
 <dt id="cosmology.cosmology">
 <em class="property">class </em><tt class="descclassname">cosmology.</tt><tt class="descname">cosmology</tt><big>(</big><em>cosmology self</em><big>)</big><a class="headerlink" href="#cosmology.cosmology" title="Permalink to this definition">¶</a></dt>
 <dd><p>Proxy of C++ cosmology class</p>
@@ -107,7 +114,8 @@ Bryan and Norman 98</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cosmology</span> <span class="kn">as</span> <span class="nn">cc</span><span class="p">;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">Delta_crit</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
 <span class="go">97.0097792196</span>
 </pre></div>
@@ -137,7 +145,8 @@ Bryan and Norman 98</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cosmology</span> <span class="kn">as</span> <span class="nn">cc</span><span class="p">;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">Eofz</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="go">1.28111279753</span>
 </pre></div>
@@ -167,7 +176,8 @@ Bryan and Norman 98</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cosmology</span> <span class="kn">as</span> <span class="nn">cc</span><span class="p">;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">Omega</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="go">0.555217060168</span>
 </pre></div>
@@ -217,7 +227,8 @@ __init__(cosmology self, cosmo arg2) -&gt; cosmology</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cosmology</span> <span class="kn">as</span> <span class="nn">cc</span><span class="p">;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -259,7 +270,8 @@ __init__(cosmology self, cosmo arg2) -&gt; cosmology</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cosmology</span> <span class="kn">as</span> <span class="nn">cc</span><span class="p">;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">conc</span><span class="p">(</span><span class="mf">1.0E13</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
 <span class="go">7.57896671931</span>
 </pre></div>
@@ -307,7 +319,8 @@ respect to the background at redshift z</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cosmology</span> <span class="kn">as</span> <span class="nn">cc</span><span class="p">;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">convertMdelta_Mdeltap</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0E12</span><span class="p">,</span><span class="mf">200.</span><span class="p">,</span><span class="mf">300.</span><span class="p">)</span>
 <span class="go">[916906871432.2742, 10.512114412989405]</span>
 </pre></div>
@@ -356,7 +369,8 @@ defined as Delta with respect to the background density</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cosmology</span> <span class="kn">as</span> <span class="nn">cc</span><span class="p">;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">getMvir</span><span class="p">(</span><span class="mf">1.E11</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">200.0</span><span class="p">)</span>
 <span class="go">88953346252.6</span>
 </pre></div>
@@ -401,7 +415,8 @@ has virial concentration equal to cvir.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cosmology</span> <span class="kn">as</span> <span class="nn">cc</span><span class="p">;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">getcDelta</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">200.</span><span class="p">)</span>
 <span class="go">12.6784160959</span>
 </pre></div>
@@ -434,7 +449,8 @@ redshift z, output stored in file fileout</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cosmology</span> <span class="kn">as</span> <span class="nn">cc</span><span class="p">;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">mah_Zhao</span><span class="p">(</span><span class="mf">1.E11</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -480,7 +496,8 @@ as Delta with respect to the background density</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cosmology</span> <span class="kn">as</span> <span class="nn">cc</span><span class="p">;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">modelNFWhalo_com</span><span class="p">(</span><span class="mf">1.E12</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">200.0</span><span class="p">)</span>
 <span class="go">[880330641353.4209, 0.198291214519584, 9.765326694230426]</span>
 </pre></div>
@@ -530,7 +547,8 @@ Delta with respect to the background density</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cosmology</span> <span class="kn">as</span> <span class="nn">cc</span><span class="p">;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">modelNFWhalo_com</span><span class="p">(</span><span class="mf">1.E12</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">200.0</span><span class="p">)</span>
 <span class="go">[880330641353.4209, 0.198291214519584, 9.765326694230426, 0.2515830411841534, 12.386409188477131]</span>
 </pre></div>
@@ -564,7 +582,8 @@ redshift z0 between redshifts z1 and z2, z0&lt;z1&lt;z2</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cosmology</span> <span class="kn">as</span> <span class="nn">cc</span><span class="p">;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">pe_fraction</span><span class="p">(</span><span class="mf">1.E11</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">)</span>
 <span class="go">0.614891598653</span>
 </pre></div>
@@ -615,7 +634,8 @@ the ratio of its mass to the mass at redshift zstart.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cosmology</span> <span class="kn">as</span> <span class="nn">cc</span><span class="p">;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">pevolve_fixed</span><span class="p">(</span><span class="mf">12.0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
 <span class="go">[5.019071157921484, 0.585350923353302]</span>
 </pre></div>
@@ -658,7 +678,8 @@ redshift z</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cosmology</span> <span class="kn">as</span> <span class="nn">cc</span><span class="p">;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">rvir_from_mvir</span><span class="p">(</span><span class="mf">1.E12</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
 <span class="go">0.20689732071</span>
 </pre></div>
@@ -688,7 +709,8 @@ redshift z</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cosmology</span> <span class="kn">as</span> <span class="nn">cc</span><span class="p">;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">set_cfile</span><span class="p">(</span><span class="s">&#39;myconcentration.dat&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
