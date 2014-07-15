@@ -1,0 +1,419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Cosmology code documentation &mdash; pevolve rc1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'rc1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="pevolve rc1 documentation" href="index.html" />
+    <link rel="next" title="Frequently asked questions" href="faq.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="faq.html" title="Frequently asked questions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pevolve rc1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="installation.html"
+                        title="previous chapter">Installation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="faq.html"
+                        title="next chapter">Frequently asked questions</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/code.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-cosmology">
+<span id="cosmology-code-documentation"></span><h1>Cosmology code documentation<a class="headerlink" href="#module-cosmology" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="cosmology.cosmology">
+<em class="property">class </em><tt class="descclassname">cosmology.</tt><tt class="descname">cosmology</tt><big>(</big><em>cosmology self</em><big>)</big><a class="headerlink" href="#cosmology.cosmology" title="Permalink to this definition">¶</a></dt>
+<dd><p>Proxy of C++ cosmology class</p>
+<dl class="method">
+<dt id="cosmology.cosmology.Delta_crit">
+<tt class="descname">Delta_crit</tt><big>(</big><em>cosmology self</em>, <em>double z</em><big>)</big> &rarr; double<a class="headerlink" href="#cosmology.cosmology.Delta_crit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the critical overdensity for collapse at redshift z
+with respect to the critical density of the Universe a&#8217;la
+Bryan and Norman 98</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>z : Redshift</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">Delta_crit</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="cosmology.cosmology.Eofz">
+<tt class="descname">Eofz</tt><big>(</big><em>cosmology self</em>, <em>double z</em><big>)</big> &rarr; double<a class="headerlink" href="#cosmology.cosmology.Eofz" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the cosmological expansion function E(z)</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>z : Redshift</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">Eofz</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="cosmology.cosmology.Omega">
+<tt class="descname">Omega</tt><big>(</big><em>cosmology self</em>, <em>double z</em><big>)</big> &rarr; double<a class="headerlink" href="#cosmology.cosmology.Omega" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the matter density at redshift z</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>z : Redshift</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">Omega</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="cosmology.cosmology.conc">
+<tt class="descname">conc</tt><big>(</big><em>cosmology self</em>, <em>double M</em>, <em>double z</em><big>)</big> &rarr; double<a class="headerlink" href="#cosmology.cosmology.conc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns concentration as a function of Mvir and z</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>z : Redshift</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">conc</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="cosmology.cosmology.convertMdelta_Mdeltap">
+<tt class="descname">convertMdelta_Mdeltap</tt><big>(</big><em>cosmology self</em>, <em>double z</em>, <em>double Mdelta</em>, <em>double Delta</em>, <em>double Deltap</em><big>)</big><a class="headerlink" href="#cosmology.cosmology.convertMdelta_Mdeltap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the mass and concentration of a halo defined to be
+Deltap times overdense with respect to background density if
+it has mass Mdelta when defined as Delta times overdense with
+respect to the background at redshift z</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>z : Redshift
+Mdelta : Mass defined as Delta times overdense with respect to background density
+Delta : The overdensity
+Deltap : The new overdensity</dd>
+<dt>Returns:</dt>
+<dd>Mdeltap : The mass defined as Deltap times overdense with respect to background density
+cdeltap : The concentration of halo defined as Deltap times overdense with respect to background density</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="cosmology.cosmology.cosmo_free">
+<tt class="descname">cosmo_free</tt><big>(</big><em>cosmology self</em><big>)</big><a class="headerlink" href="#cosmology.cosmology.cosmo_free" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cosmology.cosmology.getMvir">
+<tt class="descname">getMvir</tt><big>(</big><em>cosmology self</em>, <em>double M</em>, <em>double z</em>, <em>double Delta</em><big>)</big> &rarr; double<a class="headerlink" href="#cosmology.cosmology.getMvir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the virial mass of a halo of mass M at redshift z but
+defined as Delta with respect to the background density</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>M : Mass defined as Delta times overdense with respect to background density
+z : Redshift at which M is identified
+Delta : The overdensity with respect to the background</dd>
+<dt>Returns:</dt>
+<dd>Mvir : Virial mass</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">getMvir</span><span class="p">(</span><span class="mf">1.E11</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">200.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="cosmology.cosmology.getcDelta">
+<tt class="descname">getcDelta</tt><big>(</big><em>cosmology self</em>, <em>double z</em>, <em>double cvir</em>, <em>double Del</em><big>)</big><a class="headerlink" href="#cosmology.cosmology.getcDelta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the concentration, cDelta, of a halo defined as Delta
+with respect to the background density at redshift z and which
+has virial concentration equal to cvir.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>z : Mass defined as Delta times overdense with respect to background density
+cvir : The virial concentration
+Del : The overdensity with respect to the background</dd>
+<dt>Returns:</dt>
+<dd>cDelta : The concentration of this halo when defined as Del times overdense with respect to the background</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">getcDelta</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">200.</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="cosmology.cosmology.mah_Zhao">
+<tt class="descname">mah_Zhao</tt><big>(</big><em>cosmology self</em>, <em>double M</em>, <em>double z=0.0</em><big>)</big><a class="headerlink" href="#cosmology.cosmology.mah_Zhao" title="Permalink to this definition">¶</a></dt>
+<dd><p>mah_Zhao(cosmology self, double M)</p>
+<p>Output the mass accretion history of a halo of mass M at
+redshift z, output stored in file fileout</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>M : Virial mass
+z : Redshift</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">mah_Zhao</span><span class="p">(</span><span class="mf">1.E11</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="cosmology.cosmology.modelNFWhalo_com">
+<tt class="descname">modelNFWhalo_com</tt><big>(</big><em>cosmology self</em>, <em>double mDel</em>, <em>double z</em>, <em>double Del</em><big>)</big><a class="headerlink" href="#cosmology.cosmology.modelNFWhalo_com" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the virial mass, comoving virial radius, and virial
+concentration of a halo of mass Mdelta at redshift z, defined
+as Delta with respect to the background density</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>mDel : Mass defined as Delta times overdense with respect to background density
+z : Redshift
+Delta : The overdensity</dd>
+<dt>Returns:</dt>
+<dd>Mvir : The virial mass
+Rvir : The comoving virial radius
+cvir : The virial concentration</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">modelNFWhalo_com</span><span class="p">(</span><span class="mf">1.E12</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">200.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="cosmology.cosmology.modelNFWhalo_com_ext">
+<tt class="descname">modelNFWhalo_com_ext</tt><big>(</big><em>cosmology self</em>, <em>double mDel</em>, <em>double z</em>, <em>double Del</em><big>)</big><a class="headerlink" href="#cosmology.cosmology.modelNFWhalo_com_ext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the virial mass, comoving virial radius, virial
+concentration, boundary radius Rdelta, and concentration
+cDelta of a halo of mass Mdelta at redshift z, defined as
+Delta with respect to the background density</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>mDel : Mass defined as Delta times overdense with respect to background density
+z : Redshift
+Delta : The overdensity</dd>
+<dt>Returns:</dt>
+<dd>Mvir : The virial mass
+Rvir : The comoving virial radius
+cvir : The virial concentration
+Rdel : The comoving boundary of halo Delta times overdense with respect to background density
+cdel : The concentration of halo Delta times overdense with respect to background density</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">modelNFWhalo_com</span><span class="p">(</span><span class="mf">1.E12</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">200.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="cosmology.cosmology.pe_fraction">
+<tt class="descname">pe_fraction</tt><big>(</big><em>cosmology self</em>, <em>double mvir0</em>, <em>double z0</em>, <em>double z1</em>, <em>double z2</em><big>)</big> &rarr; double<a class="headerlink" href="#cosmology.cosmology.pe_fraction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the pseudo-evolution fraction of halo of mass Mvir0 at
+redshift z0 between redshifts z1 and z2, z0&lt;z1&lt;z2</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>mvir0 : Virial mass
+z0 : Redshift at which the mvir0 is identified
+z1 : Initial redshift
+z2 : Final redshift</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">pe_fraction</span><span class="p">(</span><span class="mf">1.E11</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="cosmology.cosmology.pevolve_fixed">
+<tt class="descname">pevolve_fixed</tt><big>(</big><em>cosmology self</em>, <em>double cdel</em>, <em>int opt</em>, <em>double z</em>, <em>double zstart=0.0</em><big>)</big><a class="headerlink" href="#cosmology.cosmology.pevolve_fixed" title="Permalink to this definition">¶</a></dt>
+<dd><p>pevolve_fixed(cosmology self, double cdel, int opt, double z)</p>
+<p>Pseudo-evolution estimate for the mass (backward or forward):
+Assume that the physical density profile of a peak with
+concentration cdel at redshift zstart defined to be of type
+opt 
+remains fixed. Calculate its concentration at redshift z, and
+the ratio of its mass to the mass at redshift zstart.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>cdel : concentration of halo 
+opt : opt=1: Defined with respect to background density, opt=2: Defined to be virial mass, opt=3: Defined with respect to critical density
+z: Redshift
+zstart : The reference redshift at which the halo density profile is fixed</dd>
+<dt>Returns:</dt>
+<dd>cdelz : The concentration of the halo at redshift z
+fdelz : The ratio of the mass at redshift z to the mass at redshift zstart</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">pevolve_fixed</span><span class="p">(</span><span class="mf">12.0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="cosmology.cosmology.rvir_from_mvir">
+<tt class="descname">rvir_from_mvir</tt><big>(</big><em>cosmology self</em>, <em>double Mvir</em>, <em>double z</em><big>)</big> &rarr; double<a class="headerlink" href="#cosmology.cosmology.rvir_from_mvir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the comoving virial radius of a halo of mass Mvir at
+redshift z</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>Mvir : Virial mass
+z : Redshift</dd>
+<dt>Returns:</dt>
+<dd>Rvir : The comoving virial radius</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">rvir_from_mvir</span><span class="p">(</span><span class="mf">1.E12</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="cosmology.cosmology.set_cfile">
+<tt class="descname">set_cfile</tt><big>(</big><em>cosmology self</em>, <em>char * cfile</em><big>)</big><a class="headerlink" href="#cosmology.cosmology.set_cfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the file to be used for the concentration mass relation</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>cfile : File name that contains cvir(Mvir) that should be read. The columns should be Mvir, cvir</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">set_cfile</span><span class="p">(</span><span class="s">&#39;myconcentration.dat&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="cosmology.cosmology.setfconc">
+<tt class="descname">setfconc</tt><big>(</big><em>cosmology self</em>, <em>double x</em><big>)</big><a class="headerlink" href="#cosmology.cosmology.setfconc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiply all concentrations by a factor x from here on</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>x : multiplicative factor to the concentration of halo</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="faq.html" title="Frequently asked questions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             >previous</a> |</li>
+        <li><a href="index.html">pevolve rc1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Surhud More.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

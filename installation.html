@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation &mdash; pevolve rc1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'rc1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="pevolve rc1 documentation" href="index.html" />
+    <link rel="next" title="Cosmology code documentation" href="code.html" />
+    <link rel="prev" title="Welcome to pevolve’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="code.html" title="Cosmology code documentation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to pevolve’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pevolve rc1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installation</a></li>
+<li><a class="reference internal" href="#step-by-step-instructions">Step by step instructions</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to pevolve&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="code.html"
+                        title="next chapter">Cosmology code documentation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/installation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>The pseudo-evolution package depends upon the following</dt>
+<dd><ol class="first last arabic simple">
+<li><a class="reference external" href="http://www.swig.org">swig</a></li>
+<li><a class="reference external" href="http://www.gnu.org/software/gsl">GNU scientific library</a></li>
+<li><a class="reference external" href="http://202.127.29.4/dhzhao/mandc.html">The public mandc code by Donghai Zhao</a></li>
+</ol>
+</dd>
+<dt>Optional</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://sphinx-doc.org">Sphinx for documentation</a></li>
+</ul>
+</dd>
+</dl>
+<p>The installer can install item number 2 and 3 if the computer has access to the internet.</p>
+</div>
+<div class="section" id="step-by-step-instructions">
+<h1>Step by step instructions<a class="headerlink" href="#step-by-step-instructions" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>Download source code</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://github.com/surhud/pevolve">Source code for pevolve</a></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git clone http://github.com/surhud/pevolve
+<span class="nv">$ </span><span class="nb">cd </span>pevolve
+<span class="nv">$ </span>sh setup_requirements.sh
+</pre></div>
+</div>
+<p>If all goes well, then pevolve should be installed in the install directory
+inside pevolve. Now add the directory where pevolve was installed to you
+PYTHONPATH variable and the current directory to the PATH variable.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">export </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:<span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/install/lib/python2.7/site-packages
+<span class="nv">$ </span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>
+</pre></div>
+</div>
+<p>Please modify the python path in the code above depending upon your system
+install. Check installlog.txt to see the path to pevolve for example.</p>
+<p>If the installer had to install gsl on your system then you need to add the path
+where gsl was installed to your LD_LIBRARY_PATH environment variable.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="c"># Only if gsl had to be installed by the installer</span>
+<span class="nv">$ </span><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:<span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/gsl-1.16/install/lib/
+</pre></div>
+</div>
+<p>The code should now be setup for use! Please see the cosmology documentation for
+further examples.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="code.html" title="Cosmology code documentation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to pevolve’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">pevolve rc1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Surhud More.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
