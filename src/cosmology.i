@@ -18,11 +18,17 @@
 
 Parameters:
     Omega0 : Matter density parameter
+
     OmegaLambda : Dark energy density parameter
-    Omegaba : Baryon density parameter
+
+    Omegab : Baryon density parameter
+
     h : Hubble parameter
+
     ThetaCMB : CMB temperature
+
     sigma8 : sigma8
+
     ns : power spectrum index
 
 Returns:
@@ -89,6 +95,7 @@ Examples:
 
 Parameters:
    Mvir : Virial mass in hinv Msun
+
    z : Redshift
 
 Examples:
@@ -103,6 +110,7 @@ redshift z, output stored in file fileout
 
 Parameters:
     M : Virial mass in hinv Msun
+
     z : Redshift
 
 Examples:
@@ -116,8 +124,11 @@ redshift z0 between redshifts z1 and z2, z0<z1<z2
 
 Parameters:
     mvir0 : Virial mass in hinv Msun
+
     z0 : Redshift at which the mvir0 is identified
+
     z1 : Initial redshift
+
     z2 : Final redshift
     
 Examples:
@@ -132,7 +143,9 @@ defined as Delta with respect to the background density
 
 Parameters:
     M : Mass (hinv Msun) defined as Delta times overdense with respect to background density
+
     z : Redshift at which M is identified
+
     Delta : The overdensity with respect to the background
 
 Returns:
@@ -151,7 +164,9 @@ has virial concentration equal to cvir.
 
 Parameters:
     z : Redshift
+
     cvir : The virial concentration
+
     Del : The overdensity with respect to the background
 
 Returns:
@@ -169,6 +184,7 @@ redshift z
 
 Parameters:
     Mvir : Virial mass in hinv Msun
+
     z : Redshift
 
 Returns:
@@ -187,12 +203,16 @@ as Delta with respect to the background density
 
 Parameters:
     mDel : Mass (hinv Msun) defined as Delta times overdense with respect to background density
+
     z : Redshift
+
     Delta : The overdensity
 
 Returns:
     Mvir : The virial mass (hinv Msun)
+
     Rvir : The comoving virial radius (hinv Mpc)
+
     cvir : The virial concentration
 
 Examples:
@@ -209,14 +229,20 @@ Delta with respect to the background density
 
 Parameters:
     mDel : Mass (hinv Msun) defined as Delta times overdense with respect to background density
+
     z : Redshift
+
     Delta : The overdensity
 
 Returns:
     Mvir : The virial mass (hinv Msun)
+
     Rvir : The comoving virial radius (hinv Mpc)
+
     cvir : The virial concentration
+
     Rdel : The comoving boundary of halo Delta times overdense with respect to background density (hinv Mpc)
+
     cdel : The concentration of halo Delta times overdense with respect to background density
 
 Examples:
@@ -235,12 +261,16 @@ the ratio of its mass to the mass at redshift zstart.
 
 Parameters:
     cdel : concentration of halo 
+
     opt : opt=1: Defined with respect to background density, opt=2: Defined to be virial mass, opt=3: Defined with respect to critical density
+
     z: Redshift
+
     zstart : The reference redshift at which the halo density profile is fixed
 
 Returns:
     cdelz : The concentration of the halo at redshift z
+
     fdelz : The ratio of the mass at redshift z to the mass at redshift zstart
 
 Examples:
@@ -264,12 +294,16 @@ respect to the background at redshift z
 
 Parameters:
     z : Redshift
+
     Mdelta : Mass (hinv Msun) defined as Delta times overdense with respect to background density
+
     Delta : The overdensity
+
     Deltap : The new overdensity
 
 Returns:
     Mdeltap : The mass (hinv Msun) defined as Deltap times overdense with respect to background density
+
     cdeltap : The concentration of halo defined as Deltap times overdense with respect to background density
 
 Examples:
