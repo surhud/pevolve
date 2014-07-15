@@ -5,12 +5,12 @@ Installation
 ============
 
 The pseudo-evolution package depends upon the following
-    1. `swig <http://www.swig.org>`
-    2. `GNU scientific library <http://www.gnu.org/software/gsl>`
-    3. `The public mandc code by Donghai Zhao <http://202.127.29.4/dhzhao/mandc.html>`
+    1. `swig <http://www.swig.org>`_
+    2. `GNU scientific library <http://www.gnu.org/software/gsl>`_
+    3. `The public mandc code by Donghai Zhao <http://202.127.29.4/dhzhao/mandc.html>`_
 
 Optional
-    - `Sphinx for documentation <http://sphinx-doc.org>`
+    - `Sphinx for documentation <http://sphinx-doc.org>`_
 
 The installer can install item number 2 and 3 if the computer has access to the internet.
 
@@ -18,7 +18,7 @@ Step by step instructions
 =========================
 
 Download source code
-    - `Source code for pevolve <http://github.com/surhud/pevolve>`
+    - `Source code for pevolve <http://github.com/surhud/pevolve>`_
 
     $ git clone http://github.com/surhud/pevolve
     $ cd pevolve
