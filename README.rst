@@ -20,6 +20,8 @@ Step by step instructions
 Download source code
     - `Source code for pevolve <http://github.com/surhud/pevolve>`_
 
+.. sourcecode:: bash
+
     $ git clone http://github.com/surhud/pevolve
     $ cd pevolve
     $ sh setup_requirements.sh
@@ -27,6 +29,8 @@ Download source code
 If all goes well, then pevolve should be installed in the install directory
 inside pevolve. Now add the directory where pevolve was installed to you
 PYTHONPATH variable and the current directory to the PATH variable.
+
+.. sourcecode:: bash
 
     $ export PYTHONPATH=$PYTHONPATH:`pwd`/install/lib/python2.7/site-packages
     $ export PATH=$PATH:`pwd`
@@ -36,6 +40,8 @@ install. Check installlog.txt to see the path to pevolve for example.
 
 If the installer had to install gsl on your system then you need to add the path
 where gsl was installed to your LD_LIBRARY_PATH environment variable. 
+
+.. sourcecode:: bash
 
     $ # Only if gsl had to be installed by the installer
     $ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`pwd`/gsl-1.16/install/lib/
