@@ -6,7 +6,11 @@
 Welcome to pevolve's documentation!
 ===================================
 
-Contents:
+Author : Surhud More
+Description : Various routines to compute pseudo-evolution of halo mass
+Known issues : `Check here <https://github.com/surhud/pevolve/issues>`_
+
+Table of contents:
 
 .. toctree::
    :maxdepth: 2
