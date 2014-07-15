@@ -97,7 +97,8 @@ Bryan and Norman 98</p>
 <dd>z : Redshift</dd>
 <dt>Examples:</dt>
 <dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">Delta_crit</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">Delta_crit</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="go">97.0097792196</span>
 </pre></div>
 </div>
 </dd>
@@ -114,6 +115,7 @@ Bryan and Norman 98</p>
 <dt>Examples:</dt>
 <dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">Eofz</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="go">1.28111279753</span>
 </pre></div>
 </div>
 </dd>
@@ -123,13 +125,14 @@ Bryan and Norman 98</p>
 <dl class="method">
 <dt id="cosmology.cosmology.Omega">
 <tt class="descname">Omega</tt><big>(</big><em>cosmology self</em>, <em>double z</em><big>)</big> &rarr; double<a class="headerlink" href="#cosmology.cosmology.Omega" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the matter density at redshift z</p>
+<dd><p>Returns the matter density parameter at redshift z</p>
 <dl class="docutils">
 <dt>Parameters:</dt>
 <dd>z : Redshift</dd>
 <dt>Examples:</dt>
 <dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">Omega</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="go">0.555217060168</span>
 </pre></div>
 </div>
 </dd>
@@ -183,10 +186,12 @@ ns : power spectrum index</dd>
 <dd><p>Returns concentration as a function of Mvir and z</p>
 <dl class="docutils">
 <dt>Parameters:</dt>
-<dd>z : Redshift</dd>
+<dd>Mvir : Virial mass in hinv Msun
+z : Redshift</dd>
 <dt>Examples:</dt>
 <dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">conc</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">conc</span><span class="p">(</span><span class="mf">1.0E13</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="go">7.57896671931</span>
 </pre></div>
 </div>
 </dd>
@@ -203,12 +208,19 @@ respect to the background at redshift z</p>
 <dl class="docutils">
 <dt>Parameters:</dt>
 <dd>z : Redshift
-Mdelta : Mass defined as Delta times overdense with respect to background density
+Mdelta : Mass (hinv Msun) defined as Delta times overdense with respect to background density
 Delta : The overdensity
 Deltap : The new overdensity</dd>
 <dt>Returns:</dt>
-<dd>Mdeltap : The mass defined as Deltap times overdense with respect to background density
+<dd>Mdeltap : The mass (hinv Msun) defined as Deltap times overdense with respect to background density
 cdeltap : The concentration of halo defined as Deltap times overdense with respect to background density</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">convertMdelta_Mdeltap</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0E12</span><span class="p">,</span><span class="mf">200.</span><span class="p">,</span><span class="mf">300.</span><span class="p">)</span>
+<span class="go">[916906871432.2742, 10.512114412989405]</span>
+</pre></div>
+</div>
+</dd>
 </dl>
 </dd></dl>
 
@@ -224,14 +236,15 @@ cdeltap : The concentration of halo defined as Deltap times overdense with respe
 defined as Delta with respect to the background density</p>
 <dl class="docutils">
 <dt>Parameters:</dt>
-<dd>M : Mass defined as Delta times overdense with respect to background density
+<dd>M : Mass (hinv Msun) defined as Delta times overdense with respect to background density
 z : Redshift at which M is identified
 Delta : The overdensity with respect to the background</dd>
 <dt>Returns:</dt>
-<dd>Mvir : Virial mass</dd>
+<dd>Mvir : Virial mass in hinv Msun</dd>
 <dt>Examples:</dt>
 <dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">getMvir</span><span class="p">(</span><span class="mf">1.E11</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">200.0</span><span class="p">)</span>
+<span class="go">88953346252.6</span>
 </pre></div>
 </div>
 </dd>
@@ -246,7 +259,7 @@ with respect to the background density at redshift z and which
 has virial concentration equal to cvir.</p>
 <dl class="docutils">
 <dt>Parameters:</dt>
-<dd>z : Mass defined as Delta times overdense with respect to background density
+<dd>z : Redshift
 cvir : The virial concentration
 Del : The overdensity with respect to the background</dd>
 <dt>Returns:</dt>
@@ -254,6 +267,7 @@ Del : The overdensity with respect to the background</dd>
 <dt>Examples:</dt>
 <dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">getcDelta</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">200.</span><span class="p">)</span>
+<span class="go">12.6784160959</span>
 </pre></div>
 </div>
 </dd>
@@ -268,7 +282,7 @@ Del : The overdensity with respect to the background</dd>
 redshift z, output stored in file fileout</p>
 <dl class="docutils">
 <dt>Parameters:</dt>
-<dd>M : Virial mass
+<dd>M : Virial mass in hinv Msun
 z : Redshift</dd>
 <dt>Examples:</dt>
 <dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
@@ -287,16 +301,17 @@ concentration of a halo of mass Mdelta at redshift z, defined
 as Delta with respect to the background density</p>
 <dl class="docutils">
 <dt>Parameters:</dt>
-<dd>mDel : Mass defined as Delta times overdense with respect to background density
+<dd>mDel : Mass (hinv Msun) defined as Delta times overdense with respect to background density
 z : Redshift
 Delta : The overdensity</dd>
 <dt>Returns:</dt>
-<dd>Mvir : The virial mass
-Rvir : The comoving virial radius
+<dd>Mvir : The virial mass (hinv Msun)
+Rvir : The comoving virial radius (hinv Mpc)
 cvir : The virial concentration</dd>
 <dt>Examples:</dt>
 <dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">modelNFWhalo_com</span><span class="p">(</span><span class="mf">1.E12</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">200.0</span><span class="p">)</span>
+<span class="go">[880330641353.4209, 0.198291214519584, 9.765326694230426]</span>
 </pre></div>
 </div>
 </dd>
@@ -312,18 +327,19 @@ cDelta of a halo of mass Mdelta at redshift z, defined as
 Delta with respect to the background density</p>
 <dl class="docutils">
 <dt>Parameters:</dt>
-<dd>mDel : Mass defined as Delta times overdense with respect to background density
+<dd>mDel : Mass (hinv Msun) defined as Delta times overdense with respect to background density
 z : Redshift
 Delta : The overdensity</dd>
 <dt>Returns:</dt>
-<dd>Mvir : The virial mass
-Rvir : The comoving virial radius
+<dd>Mvir : The virial mass (hinv Msun)
+Rvir : The comoving virial radius (hinv Mpc)
 cvir : The virial concentration
-Rdel : The comoving boundary of halo Delta times overdense with respect to background density
+Rdel : The comoving boundary of halo Delta times overdense with respect to background density (hinv Mpc)
 cdel : The concentration of halo Delta times overdense with respect to background density</dd>
 <dt>Examples:</dt>
 <dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">modelNFWhalo_com</span><span class="p">(</span><span class="mf">1.E12</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">200.0</span><span class="p">)</span>
+<span class="go">[880330641353.4209, 0.198291214519584, 9.765326694230426, 0.2515830411841534, 12.386409188477131]</span>
 </pre></div>
 </div>
 </dd>
@@ -337,13 +353,14 @@ cdel : The concentration of halo Delta times overdense with respect to backgroun
 redshift z0 between redshifts z1 and z2, z0&lt;z1&lt;z2</p>
 <dl class="docutils">
 <dt>Parameters:</dt>
-<dd>mvir0 : Virial mass
+<dd>mvir0 : Virial mass in hinv Msun
 z0 : Redshift at which the mvir0 is identified
 z1 : Initial redshift
 z2 : Final redshift</dd>
 <dt>Examples:</dt>
 <dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">pe_fraction</span><span class="p">(</span><span class="mf">1.E11</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="go">0.614891598653</span>
 </pre></div>
 </div>
 </dd>
@@ -372,6 +389,7 @@ fdelz : The ratio of the mass at redshift z to the mass at redshift zstart</dd>
 <dt>Examples:</dt>
 <dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">pevolve_fixed</span><span class="p">(</span><span class="mf">12.0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="go">[5.019071157921484, 0.585350923353302]</span>
 </pre></div>
 </div>
 </dd>
@@ -385,13 +403,14 @@ fdelz : The ratio of the mass at redshift z to the mass at redshift zstart</dd>
 redshift z</p>
 <dl class="docutils">
 <dt>Parameters:</dt>
-<dd>Mvir : Virial mass
+<dd>Mvir : Virial mass in hinv Msun
 z : Redshift</dd>
 <dt>Returns:</dt>
-<dd>Rvir : The comoving virial radius</dd>
+<dd>Rvir : The comoving virial radius in hinv Mpc</dd>
 <dt>Examples:</dt>
 <dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">rvir_from_mvir</span><span class="p">(</span><span class="mf">1.E12</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="go">0.20689732071</span>
 </pre></div>
 </div>
 </dd>
