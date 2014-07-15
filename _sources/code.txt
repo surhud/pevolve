@@ -5,3 +5,4 @@ Cosmology code documentation
  
 .. autoclass:: cosmology
     :members:
+    :special-members:

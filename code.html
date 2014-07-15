@@ -137,6 +137,47 @@ Bryan and Norman 98</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="cosmology.cosmology.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>cosmology self</em><big>)</big> &rarr; cosmology<a class="headerlink" href="#cosmology.cosmology.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>__init__(cosmology self, double Om0, double Oml, double Omb, double h, double thetaCMB, double sigma8, double nspec) -&gt; cosmology
+__init__(cosmology self, cosmo arg2) -&gt; cosmology</p>
+<p>Initializes cosmology object</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>Omega0 : Matter density parameter
+OmegaLambda : Dark energy density parameter
+Omegaba : Baryon density parameter
+h : Hubble parameter
+ThetaCMB : CMB temperature
+sigma8 : sigma8
+ns : power spectrum index</dd>
+<dt>Returns:</dt>
+<dd>Cosmology object</dd>
+</dl>
+<p>Without any inputs, initializes to Bolshoi cosmology.</p>
+<dl class="docutils">
+<dt>Examples:</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="cosmology.cosmology.__swig_destroy__">
+<tt class="descname">__swig_destroy__</tt><big>(</big><big>)</big><a class="headerlink" href="#cosmology.cosmology.__swig_destroy__" title="Permalink to this definition">¶</a></dt>
+<dd><p>delete_cosmology(cosmology self)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosmology.cosmology.__weakref__">
+<tt class="descname">__weakref__</tt><a class="headerlink" href="#cosmology.cosmology.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="cosmology.cosmology.conc">
 <tt class="descname">conc</tt><big>(</big><em>cosmology self</em>, <em>double M</em>, <em>double z</em><big>)</big> &rarr; double<a class="headerlink" href="#cosmology.cosmology.conc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns concentration as a function of Mvir and z</p>
