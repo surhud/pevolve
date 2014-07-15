@@ -1,0 +1,12 @@
+1,2c1,2
+< FC = f77
+< FFLAGS = -O
+---
+> #FC = f77
+> #FFLAGS = -O
+4,5c4,5
+< #FC = g77
+< #FFLAGS = -O -static
+---
+> FC = g77
+> FFLAGS = -O3 

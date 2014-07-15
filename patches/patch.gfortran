@@ -1,0 +1,10 @@
+1,2c1,2
+< FC = f77
+< FFLAGS = -O
+---
+> #FC = f77
+> #FFLAGS = -O
+12a13,15
+> FC = gfortran
+> FFLAGS = -O3
+> 
