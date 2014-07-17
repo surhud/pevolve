@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 rm -rf build/ install/ src/*.py src/*wrap*
 
@@ -62,6 +62,7 @@ then
   cd ../install
   idir=`pwd`
   echo "# Please add $idir/bin to your path: \n PATH=\$PATH:$idir/bin" >> instructions.txt
+  cd ..
 else
   echo "swig is installed"
 fi
@@ -69,9 +70,10 @@ fi
 set +e
 
 # Now mandc code
-mandcexec=`PATH=$PATH:. mandc.x`
+hash mandc.x 2>&-
+mandcexec=$?
 # Check for gsl installation
-if [ -z "$mandcexec" ]
+if [ $mandcexec -ne 0 ]
 then
   # Install mandc.x
   echo "++++++++++++++++++++++++++++++++++++++++++++++++"
@@ -88,7 +90,7 @@ then
       do
           hash $comp 2>&-
           success=$?
-          if [[ $success -ne 0 ]]; then
+          if [ $success -ne 0 ]; then
               echo "I could not find $comp";
               continue;
           else
@@ -99,7 +101,7 @@ then
           fi
       done
   
-  if [[ $success -eq 1 ]]; then
+  if [ $success -eq 1 ]; then
       echo "Sorry could not find any of the common fortran compilers:"
       echo "f77 g77 gfortran f95 or ifort"
       echo "If you have installed these please add the path to the"
@@ -113,6 +115,9 @@ then
       cd ../install/bin
       ln -sf ../../mandc-1.03main/mandc.x .
       echo "The code mandc.x is ready to use!"
+      cd ..
+      idir=`pwd`
+      cd ..
       set +e
   fi
   echo "# Please add $idir/bin to your path: \n PATH=\$PATH:$idir/bin" >> instructions.txt
