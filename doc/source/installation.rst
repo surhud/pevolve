@@ -9,7 +9,7 @@ The pseudo-evolution package depends upon the following
 Optional
     - `Sphinx for documentation <http://sphinx-doc.org>`_
 
-The installer can install item number 2 and 3 if the computer has access to the internet.
+The installer can install the first three dependencies if the computer has access to the internet and at least python is installed.
 
 Step by step instructions
 =========================
