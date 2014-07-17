@@ -30,8 +30,10 @@ then
   libflag="-L$idir/lib -lgsl -lgslcblas"
   lddir=$idir/lib
   cd ../
-  echo "# Please add $lddir to your path:\nexport LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:$lddir" > instructions.txt
-  echo "# Please add $idir/bin to your path:\nexport PATH=\$PATH:$idir/bin" >> instructions.txt
+  echo "# Please add $lddir to your path:" >>instructions.txt
+  echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:$lddir" >> instructions.txt
+  echo "# Please add $idir/bin to your path:" >>instructions.txt
+  exho "export PATH=\$PATH:$idir/bin" >> instructions.txt
 else
   echo "GSL is installed"
   # Setup flags for GSL
@@ -65,7 +67,8 @@ then
   make install
   cd ../install
   idir=`pwd`
-  echo "# Please add $idir/bin to your path: \nexport PATH=\$PATH:$idir/bin" >> instructions.txt
+  echo "# Please add $idir/bin to your path:">>instructions.txt
+  echo "export PATH=\$PATH:$idir/bin" >> instructions.txt
   cd ..
 else
   echo "swig is installed"
@@ -125,7 +128,8 @@ then
       cd ..
       set +e
   fi
-  echo "# Please add $idir/bin to your path: \nexport PATH=\$PATH:$idir/bin" >> instructions.txt
+  echo "# Please add $idir/bin to your path:" >>instructions.txt
+  echo "export PATH=\$PATH:$idir/bin" >> instructions.txt
 else
   echo "mandc.x is installed"
 fi
