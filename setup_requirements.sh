@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm -rf build/ src/*.py src/*wrap*
+rm -rf build/ src/*.py src/*wrap* instructions.txt
 
 # First test if there is a gsl installation
 gslex=`gsl-config --libs` 
@@ -28,8 +28,8 @@ then
   libflag="-L$idir/lib -lgsl -lgslcblas"
   lddir=$idir/lib
   cd ../
-  echo "# Please add $lddir to your path:\n LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:$lddir" > instructions.txt
-  echo "# Please add $idir/bin to your path:\n PATH=\$PATH:$idir/bin" >> instructions.txt
+  echo "# Please add $lddir to your path:\nexport LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:$lddir" > instructions.txt
+  echo "# Please add $idir/bin to your path:\nexport PATH=\$PATH:$idir/bin" >> instructions.txt
 else
   echo "GSL is installed"
   # Setup flags for GSL
@@ -61,7 +61,7 @@ then
   make install
   cd ../install
   idir=`pwd`
-  echo "# Please add $idir/bin to your path: \n PATH=\$PATH:$idir/bin" >> instructions.txt
+  echo "# Please add $idir/bin to your path: \nexport PATH=\$PATH:$idir/bin" >> instructions.txt
   cd ..
 else
   echo "swig is installed"
@@ -112,6 +112,7 @@ then
       echo Found compiler $comp
       set -e
       make
+      mkdir -p ../install/bin
       cd ../install/bin
       ln -sf ../../mandc-1.03main/mandc.x .
       echo "The code mandc.x is ready to use!"
@@ -120,7 +121,7 @@ then
       cd ..
       set +e
   fi
-  echo "# Please add $idir/bin to your path: \n PATH=\$PATH:$idir/bin" >> instructions.txt
+  echo "# Please add $idir/bin to your path: \nexport PATH=\$PATH:$idir/bin" >> instructions.txt
 else
   echo "mandc.x is installed"
 fi
@@ -135,7 +136,7 @@ echo "# Add the following to your PYTHONPATH variable in your bashrc:"
 echo "# Add the following to your bashrc:" >> instructions.txt
 cat installlog.txt | grep cosmology.pyc | sed s/cosmology.pyc//
 newppath=`cat installlog.txt | grep cosmology.pyc | sed s/cosmology.pyc//`
-echo PYTHONPATH=$PYTHONPATH:$newppath >>instructions.txt
+echo export PYTHONPATH=$PYTHONPATH:$newppath >>instructions.txt
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
 echo "Trying to install documentation"
