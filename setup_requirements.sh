@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PATH=$PATH:`pwd`/install/bin
+
 rm -rf build/ src/*.py src/*wrap* instructions.txt
 
 # First test if there is a gsl installation
