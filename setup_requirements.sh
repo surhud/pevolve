@@ -150,6 +150,7 @@ then
   echo "++++++++++++++++++++++++++++++++++++++++++++++++"
   echo "sphinx is not installed. Trying to install it:"
   echo "No worries if this step does not succeed."
+  echo "Just read instructions.txt to setup the paths correctly."
   echo "++++++++++++++++++++++++++++++++++++++++++++++++"
   pip install --install-option="--prefix=`pwd`/install" sphinx
 else
