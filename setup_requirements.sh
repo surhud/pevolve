@@ -141,7 +141,7 @@ PATH=$PATH:./install/bin LDFLAGS="$LDFLAGS $libflag" CPPFLAGS="$CPPFLAGS $incfla
 
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 echo "# Add the following to your PYTHONPATH variable in your bashrc:"
-echo "# Add the following to your bashrc:" >> instructions.txt
+echo "# Add the following to your ~/.bashrc and reopen your terminal:" >> instructions.txt
 cat installlog.txt | grep cosmology.pyc | sed s/cosmology.pyc//
 newppath=`cat installlog.txt | grep cosmology.pyc | sed s/cosmology.pyc//`
 echo export PYTHONPATH=$PYTHONPATH:$newppath >>instructions.txt
