@@ -42,19 +42,24 @@ Download source code
     $ ./setup_requirements.sh
 
 If all goes well, then pevolve should be installed in the install directory
-inside pevolve. Now add the directory where pevolve was installed to you
-PYTHONPATH variable and the current directory to the PATH variable.
+inside pevolve. One final step is to check the instructions.txt file generated
+by the installer. It suggests modifications to your ~/.bashrc file so that the
+new executables and files are in your path. Some of the common cases are:
+
+
+Add the directory where pevolve was installed to your PYTHONPATH variable.
 
 .. sourcecode:: bash
 
     $ export PYTHONPATH=$PYTHONPATH:`pwd`/install/lib/python2.7/site-packages
-    $ export PATH=$PATH:`pwd`
+    $ export PATH=$PATH:`pwd`/install/bin
 
 Please modify the python path in the code above depending upon your system
-install. Check installlog.txt to see the path to pevolve for example. 
+install. Check instructions.txt to see the path to pevolve for example. 
 
-If the installer had to install gsl on your system then you need to add the path
-where gsl was installed to your LD_LIBRARY_PATH environment variable. 
+If the installer had to install gsl on your system then instructions.txt will
+ask you to add the path where gsl was installed to your LD_LIBRARY_PATH
+environment variable. 
 
 .. sourcecode:: bash
 
