@@ -94,6 +94,7 @@
 <li><a class="reference external" href="http://www.swig.org">swig</a></li>
 <li><a class="reference external" href="http://www.gnu.org/software/gsl">GNU scientific library</a></li>
 <li><a class="reference external" href="http://202.127.29.4/dhzhao/mandc.html">The public mandc code by Donghai Zhao</a></li>
+<li>Any of the following fortran compilers: (gfortran, g77, f77, ifort)</li>
 </ol>
 </dd>
 <dt>Optional</dt>
@@ -102,7 +103,15 @@
 </ul>
 </dd>
 </dl>
-<p>The installer can install item number 2 and 3 if the computer has access to the internet.</p>
+<p>The installer can install the first three dependencies if the computer has access to the internet and at least python (and its header files) is installed. On Ubuntu install most of the dependencies using:</p>
+<p>On Fedora linux:
+.. sourcecode:: bash</p>
+<blockquote>
+<div>$ sudo yum install python python-devel python-sphinx swig gsl gcc-gfortran</div></blockquote>
+<p>On a mac, if you have homebrew,
+.. sourcecode:: bash</p>
+<blockquote>
+<div>$ brew install python swig gsl gfortran</div></blockquote>
 </div>
 <div class="section" id="step-by-step-instructions">
 <h1>Step by step instructions<a class="headerlink" href="#step-by-step-instructions" title="Permalink to this headline">¶</a></h1>
@@ -115,7 +124,8 @@
 </dl>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git clone http://github.com/surhud/pevolve
 <span class="nv">$ </span><span class="nb">cd </span>pevolve
-<span class="nv">$ </span>sh setup_requirements.sh
+<span class="nv">$ </span>chmod a+x setup_requirements.sh
+<span class="nv">$ </span>./setup_requirements.sh
 </pre></div>
 </div>
 <p>If all goes well, then pevolve should be installed in the install directory
