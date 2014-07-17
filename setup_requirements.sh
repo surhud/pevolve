@@ -56,6 +56,8 @@ then
   wget http://prdownloads.sourceforge.net/swig/swig-3.0.2.tar.gz
   tar -zxvf swig-*.tar.gz
   cd swig-*
+  wget http://prdownloads.sourceforge.net/pcre/pcre-8.35.tar.bz2
+  Tools/pcre-build.sh
   ./configure --prefix=`pwd`/../install
   make -j8
   make install
