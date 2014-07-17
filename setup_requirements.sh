@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm -rf build/ install/ src/*.py src/*wrap*
+rm -rf build/ src/*.py src/*wrap*
 
 # First test if there is a gsl installation
 gslex=`gsl-config --libs` 
