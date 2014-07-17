@@ -13,14 +13,19 @@ Optional
 The installer can install the first three dependencies if the computer has access to the internet and at least python (and its header files) is installed. On Ubuntu install most of the dependencies using:
 
 .. sourcecode:: bash
+
     $ sudo apt-get install python python-dev python-sphinx swig libgsl0ldbl libgsl0-dev gfortran
 
 On Fedora linux:
+
 .. sourcecode:: bash
+
     $ sudo yum install python python-devel python-sphinx swig gsl gcc-gfortran
 
 On a mac, if you have homebrew,
+
 .. sourcecode:: bash
+
     $ brew install python swig gsl gfortran
 
 Step by step instructions
