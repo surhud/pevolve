@@ -1,6 +1,3 @@
-pevolve
-=======
-
 Installation
 ============
 
@@ -8,11 +5,23 @@ The pseudo-evolution package depends upon the following
     1. `swig <http://www.swig.org>`_
     2. `GNU scientific library <http://www.gnu.org/software/gsl>`_
     3. `The public mandc code by Donghai Zhao <http://202.127.29.4/dhzhao/mandc.html>`_
+    4. Any of the following fortran compilers: (gfortran, g77, f77, ifort)
 
 Optional
     - `Sphinx for documentation <http://sphinx-doc.org>`_
 
-The installer can install item number 2 and 3 if the computer has access to the internet.
+The installer can install the first three dependencies if the computer has access to the internet and at least python (and its header files) is installed. On Ubuntu install most of the dependencies using:
+
+.. sourcecode:: bash
+    $ sudo apt-get install python python-dev python-sphinx swig libgsl0ldbl libgsl0-dev gfortran
+
+On Fedora linux:
+.. sourcecode:: bash
+    $ sudo yum install python python-devel python-sphinx swig gsl gcc-gfortran
+
+On a mac, if you have homebrew,
+.. sourcecode:: bash
+    $ brew install python swig gsl gfortran
 
 Step by step instructions
 =========================
@@ -24,7 +33,8 @@ Download source code
 
     $ git clone http://github.com/surhud/pevolve
     $ cd pevolve
-    $ sh setup_requirements.sh
+    $ chmod a+x setup_requirements.sh
+    $ ./setup_requirements.sh
 
 If all goes well, then pevolve should be installed in the install directory
 inside pevolve. Now add the directory where pevolve was installed to you
