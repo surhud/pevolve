@@ -34,11 +34,11 @@ else
   echo "GSL is installed"
   # Setup flags for GSL
   libflag=`gsl-config --libs`
-  cppflag=`gsl-config --cflags` 
+  incflag=`gsl-config --cflags` 
 fi
 
 echo "LDFLAGS is: " $libflag
-echo "CPPFLAGS is: " $cppflag
+echo "CPPFLAGS is: " $incflag
 
 set +e
 
@@ -56,7 +56,7 @@ then
   wget http://prdownloads.sourceforge.net/swig/swig-3.0.2.tar.gz
   tar -zxvf swig-*.tar.gz
   cd swig-*
-  ./configure --prefix-`pwd`/../install
+  ./configure --prefix=`pwd`/../install
   make -j8
   make install
   cd ../install
