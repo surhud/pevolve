@@ -104,6 +104,9 @@ class cosmology
         double rvir_from_mvir(double Mvir,double z); 
         void convertMdelta_Mdeltap(double z, double Mdelta, double Delta, double Deltap, double &Mdeltap, double &cdeltap);
         double getMvir(double M, double z, double Delta);
+        double getM4rs(double M, double z);
+        double dM4rs_dMphys(double mvir0,double z0,double z1,double z2);
+        double dM4rs_dMvir(double mvir0,double z0,double z1,double z2);
 
         // Concentration parameter wrapper
         double conc(double M,double z);

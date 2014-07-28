@@ -332,6 +332,57 @@ respect to the background at redshift z
     [916906871432.2742, 10.512114412989405]
 "
 
+%feature("docstring") cosmology::dM4rs_dMphys 
+"Output the ratio of the growth in M4rs and Mvir*(1-pe_fraction) between
+redshifts z1 and z2, z0<z1<z2 for a halo of mass mvir0 at redshift z0 
 
+:Parameters:
+
+-   mvir0 : Virial mass in hinv Msun
+-   z0 : Redshift at which the mvir0 is identified
+-   z1 : Initial redshift
+-   z2 : Final redshift
+    
+:Examples:
+
+    >>> import cosmology as cc
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> a.dM4rs_dMphys(1.E11,0.0,1.0,2.0)
+"
+
+
+%feature("docstring") cosmology::dM4rs_dMvir 
+"Output the ratio of the growth in M4rs and Mvir between
+redshifts z1 and z2, z0<z1<z2 for a halo of mass mvir0 at redshift z0 
+
+:Parameters:
+
+-   mvir0 : Virial mass in hinv Msun
+-   z0 : Redshift at which the mvir0 is identified
+-   z1 : Initial redshift
+-   z2 : Final redshift
+    
+:Examples:
+
+    >>> import cosmology as cc
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> a.dM4rs_dMvir(1.E11,0.0,1.0,2.0)
+"
+
+%feature("docstring") cosmology::getM4rs
+"Returns the mass within 4 scale radius given the mass and concentration of a
+halo
+
+:Parameters:
+
+-   M : Mass
+-   c : concentration
+
+:Examples:
+
+    >>> import cosmology as cc
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> a.getM4rs(M,c)
+"
 
 %include "cosmology.h"

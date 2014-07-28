@@ -50,7 +50,7 @@ cosmology::cosmology()
     Omega0 = 0.27;
     Omegab = 0.047;
     Omegal = 1.-Omega0;
-    h      = 0.73 ;
+    h      = 0.7 ;
     theta  = 1.0093;///2.7;
     sigma8 = 0.82;
     ns     = 0.95;
@@ -471,6 +471,101 @@ double cosmology::pe_fraction(double mvir0,double z0,double z1,double z2){
     //exit(101);
 
     return Mpe/(Mvir1-Mvir2);
+}
+
+double cosmology::dM4rs_dMvir(double mvir0,double z0,double z1,double z2){
+    if(!bool_pe_rho_rdelta_phys_Zhao || mvir0!=Mvir_for_pe || z0!=z_for_pe){
+        std::cout<<"# Initializing physical density profile for "<<mvir0<<" at z="<<z0<<std::endl<<std::endl;
+        init_pe_rho_rdelta_phys_Zhao(mvir0,z0);
+    }
+    if(z0>z1 || z0>z2){
+        std::cout<<"# z0 should be smaller than z1 and z2\n";
+        return 0;
+    }
+    if(z2<z1){
+        std::cout<<"# z1 should be smaller than z2\n";
+        return 0;
+    }
+    /// Calculate the total mass evolution
+    double Mvir1=gsl_spline_eval(mah_Zhao_spline,z1,mah_Zhao_acc);
+    double Mvir2=gsl_spline_eval(mah_Zhao_spline,z2,mah_Zhao_acc);
+    //mofz=(Mvir1+Mvir2)/2.;
+
+    double Rvir1=rvir_from_mvir(Mvir1,z1);
+    Rvir1=Rvir1/(1+z1);
+    double Rvir2=rvir_from_mvir(Mvir2,z2);
+    Rvir2=Rvir2/(1+z2);
+
+    /// Calculate the pseudo-evolution component
+    double Mpe=gsl_spline_eval_integ(pe_rho_rdelta_phys_Zhao_spline,Rvir2,Rvir1,pe_rho_rdelta_phys_Zhao_acc);
+    //std::cout<<"DEBUG: "<<Mpe<<" "<<Mvir2-Mvir1<<std::endl;
+    
+    double dMvir=Mvir1-Mvir2;
+
+    // First calculate concentration of these halos
+    double conc1=conc(Mvir1,z1);
+    double conc2=conc(Mvir2,z2);
+
+    double M4rs1=getM4rs(Mvir1,conc1);
+    double M4rs2=getM4rs(Mvir2,conc2);
+
+    double dM4rs=(M4rs1-M4rs2);
+    //fprintf(stderr,"# Mvir1:%e Mvir2:%e Mpe:%e dMvir:%e M4rs1:%e M4rs2:%e dM4rs:%e\n",Mvir1,Mvir2,Mpe,dMvir,M4rs1,M4rs2,dM4rs);
+
+    if(dM4rs<0)
+        return -1.0;
+    else
+        return dM4rs/dMvir;
+}
+
+
+double cosmology::dM4rs_dMphys(double mvir0,double z0,double z1,double z2){
+    if(!bool_pe_rho_rdelta_phys_Zhao || mvir0!=Mvir_for_pe || z0!=z_for_pe){
+        std::cout<<"# Initializing physical density profile for "<<mvir0<<" at z="<<z0<<std::endl<<std::endl;
+        init_pe_rho_rdelta_phys_Zhao(mvir0,z0);
+    }
+    if(z0>z1 || z0>z2){
+        std::cout<<"# z0 should be smaller than z1 and z2\n";
+        return 0;
+    }
+    if(z2<z1){
+        std::cout<<"# z1 should be smaller than z2\n";
+        return 0;
+    }
+    /// Calculate the total mass evolution
+    double Mvir1=gsl_spline_eval(mah_Zhao_spline,z1,mah_Zhao_acc);
+    double Mvir2=gsl_spline_eval(mah_Zhao_spline,z2,mah_Zhao_acc);
+    //mofz=(Mvir1+Mvir2)/2.;
+
+    double Rvir1=rvir_from_mvir(Mvir1,z1);
+    Rvir1=Rvir1/(1+z1);
+    double Rvir2=rvir_from_mvir(Mvir2,z2);
+    Rvir2=Rvir2/(1+z2);
+
+    /// Calculate the pseudo-evolution component
+    double Mpe=gsl_spline_eval_integ(pe_rho_rdelta_phys_Zhao_spline,Rvir2,Rvir1,pe_rho_rdelta_phys_Zhao_acc);
+    //std::cout<<"DEBUG: "<<Mpe<<" "<<Mvir2-Mvir1<<std::endl;
+    
+    double dMphys=Mvir1-Mvir2-Mpe;
+
+    // First calculate concentration of these halos
+    double conc1=conc(Mvir1,z1);
+    double conc2=conc(Mvir2,z2);
+
+    double M4rs1=getM4rs(Mvir1,conc1);
+    double M4rs2=getM4rs(Mvir2,conc2);
+
+    double dM4rs=(M4rs1-M4rs2);
+    //fprintf(stderr,"# Mvir1:%e Mvir2:%e Mpe:%e dMphys:%e M4rs1:%e M4rs2:%e dM4rs:%e\n",Mvir1,Mvir2,Mpe,dMphys,M4rs1,M4rs2,dM4rs);
+
+    if(dM4rs<0)
+        return -1.0;
+    else
+        return dM4rs/dMphys;
+}
+
+double cosmology::getM4rs(double M, double conc){
+    return M*mu(4.0)/mu(conc);
 }
 
 
