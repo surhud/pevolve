@@ -337,6 +337,106 @@ respect to the background at redshift z</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="cosmology.cosmology.dM4rs_dMphys">
+<tt class="descname">dM4rs_dMphys</tt><big>(</big><em>cosmology self</em>, <em>double mvir0</em>, <em>double z0</em>, <em>double z1</em>, <em>double z2</em><big>)</big> &rarr; double<a class="headerlink" href="#cosmology.cosmology.dM4rs_dMphys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the ratio of the growth in M4rs and Mvir*(1-pe_fraction) between
+redshifts z1 and z2, z0&lt;z1&lt;z2 for a halo of mass mvir0 at redshift z0</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>mvir0 : Virial mass in hinv Msun</li>
+<li>z0 : Redshift at which the mvir0 is identified</li>
+<li>z1 : Initial redshift</li>
+<li>z2 : Final redshift</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cosmology</span> <span class="kn">as</span> <span class="nn">cc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">dM4rs_dMphys</span><span class="p">(</span><span class="mf">1.E11</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cosmology.cosmology.dM4rs_dMvir">
+<tt class="descname">dM4rs_dMvir</tt><big>(</big><em>cosmology self</em>, <em>double mvir0</em>, <em>double z0</em>, <em>double z1</em>, <em>double z2</em><big>)</big> &rarr; double<a class="headerlink" href="#cosmology.cosmology.dM4rs_dMvir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the ratio of the growth in M4rs and Mvir between
+redshifts z1 and z2, z0&lt;z1&lt;z2 for a halo of mass mvir0 at redshift z0</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>mvir0 : Virial mass in hinv Msun</li>
+<li>z0 : Redshift at which the mvir0 is identified</li>
+<li>z1 : Initial redshift</li>
+<li>z2 : Final redshift</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cosmology</span> <span class="kn">as</span> <span class="nn">cc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">dM4rs_dMvir</span><span class="p">(</span><span class="mf">1.E11</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cosmology.cosmology.getM4rs">
+<tt class="descname">getM4rs</tt><big>(</big><em>cosmology self</em>, <em>double M</em>, <em>double z</em><big>)</big> &rarr; double<a class="headerlink" href="#cosmology.cosmology.getM4rs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the mass within 4 scale radius given the mass and concentration of a
+halo</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>M : Mass</li>
+<li>c : concentration</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cosmology</span> <span class="kn">as</span> <span class="nn">cc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">cosmology</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">,</span> <span class="mf">0.047</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.726</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">getM4rs</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="cosmology.cosmology.getMvir">
 <tt class="descname">getMvir</tt><big>(</big><em>cosmology self</em>, <em>double M</em>, <em>double z</em>, <em>double Delta</em><big>)</big> &rarr; double<a class="headerlink" href="#cosmology.cosmology.getMvir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Output the virial mass of a halo of mass M at redshift z but
