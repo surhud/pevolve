@@ -132,6 +132,24 @@ redshift z, output stored in file fileout
     >>> a.mah_Zhao(1.E11,0.5)
 "
 
+%feature("docstring") cosmology::pe_fraction_fwd
+"Output the pseudo-evolution fraction of halo of mass mvir0 at
+redshift z0 between redshifts z0 and z1, such that z0<z1, assuming that the
+density profile at z1 is unchanged
+
+:Parameters:
+
+-   mvir0 : Virial mass in hinv Msun
+-   z0 : Redshift at which the mvir0 is identified
+-   z1 : Initial redshift
+    
+:Examples:
+
+    >>> import cosmology as cc
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> a.pe_fraction(1.E11,0.0,1.0)
+"
+
 %feature("docstring") cosmology::pe_fraction 
 "Output the pseudo-evolution fraction of halo of mass Mvir0 at
 redshift z0 between redshifts z1 and z2, z0<z1<z2
@@ -350,6 +368,23 @@ redshifts z1 and z2, z0<z1<z2 for a halo of mass mvir0 at redshift z0
     >>> a.dM4rs_dMphys(1.E11,0.0,1.0,2.0)
 "
 
+%feature("docstring") cosmology::dMcaustic_dMvir 
+"Output the ratio of the growth in Mcaustic and Mvir between
+redshifts z1 and z2, z0<z1<z2 for a halo of mass mvir0 at redshift z0 
+
+:Parameters:
+
+-   mvir0 : Virial mass in hinv Msun
+-   z0 : Redshift at which the mvir0 is identified
+-   z1 : Initial redshift
+-   z2 : Final redshift
+    
+:Examples:
+
+    >>> import cosmology as cc
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> a.dMcaustic_dMvir(1.E11,0.0,1.0,2.0)
+"
 
 %feature("docstring") cosmology::dM4rs_dMvir 
 "Output the ratio of the growth in M4rs and Mvir between

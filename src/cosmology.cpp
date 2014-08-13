@@ -395,12 +395,13 @@ void cosmology::init_pe_rho_rdelta_phys_Zhao(double M,double z){
     /// rho(Rvir)=Mvir/(4 pi rs^3 mu(cvir) )/cvir/(1+cvir)^2
 
     double zred,mvir,cvir;
-    double *xx,*yy,*zz,*xz;
+    double *xx,*yy,*zz,*xz,*cc;
     int fill=125;
     xx=new double [fill];
     yy=new double [fill];
     xz=new double [fill];
     zz=new double [fill];
+    cc=new double [fill];
 
     sprintf(fname,"%s/fileout.mvir.mah",dirname);
     FILE *fp=fopen(fname,"r");
@@ -414,6 +415,8 @@ void cosmology::init_pe_rho_rdelta_phys_Zhao(double M,double z){
         yy[fill-i-1]=mvir/( 4*M_PI*pow(rs,3)*mu(cvir)*cvir*pow(1.+cvir,2) )*4*M_PI*rvir*rvir;
         zz[i]=mvir;
         xz[i]=zred;
+        cc[i]=cvir;
+        fprintf(stdout,"%le %le %le\n",zred,mvir,cvir);
     }
 
 
@@ -423,6 +426,9 @@ void cosmology::init_pe_rho_rdelta_phys_Zhao(double M,double z){
     mah_Zhao_acc=gsl_interp_accel_alloc ();
     mah_Zhao_spline=gsl_spline_alloc(gsl_interp_cspline,fill);
     gsl_spline_init(mah_Zhao_spline,xz,zz,fill);
+    cvir_mah_Zhao_acc=gsl_interp_accel_alloc ();
+    cvir_mah_Zhao_spline=gsl_spline_alloc(gsl_interp_cspline,fill);
+    gsl_spline_init(cvir_mah_Zhao_spline,xz,cc,fill);
 
     Mvir_for_pe=M;
     z_for_pe=z;
@@ -437,6 +443,32 @@ void cosmology::init_pe_rho_rdelta_phys_Zhao(double M,double z){
 
     delete [] command;
 
+}
+
+double cosmology::pe_fraction_fwd(double mvir0,double z0,double z1){
+    if(!bool_pe_rho_rdelta_phys_Zhao || mvir0!=Mvir_for_pe || z0!=z_for_pe){
+        std::cout<<"# Initializing physical density profile for "<<mvir0<<" at z="<<z0<<std::endl<<std::endl;
+        init_pe_rho_rdelta_phys_Zhao(mvir0,z0);
+    }
+    if(z0>=z1){
+        std::cout<<"# z0 should be smaller than z1 and z2\n";
+        return 0;
+    }
+    /// Calculate the total mass evolution
+    double mvir1=gsl_spline_eval(mah_Zhao_spline,z1,mah_Zhao_acc);
+
+    double rvir1=rvir_from_mvir(mvir1,z1);
+    rvir1=rvir1/(1+z1);
+    double cvir1=gsl_spline_eval(cvir_mah_Zhao_spline,z1,cvir_mah_Zhao_acc);
+    double rs1=rvir1/cvir1;
+
+    double rvir0=rvir_from_mvir(mvir0,z0);
+    rvir0=rvir0/(1+z0);
+
+    /// Calculate the pseudo-evolution component
+    double Mpe=mvir1/mu(cvir1)*( mu(rvir0/rs1) - mu(rvir1/rs1)  );
+
+    return Mpe/(mvir0-mvir1);
 }
 
 
@@ -472,6 +504,65 @@ double cosmology::pe_fraction(double mvir0,double z0,double z1,double z2){
 
     return Mpe/(Mvir1-Mvir2);
 }
+
+double cosmology::dMcaustic_dMvir(double mvir0,double z0,double z1,double z2){
+    if(!bool_pe_rho_rdelta_phys_Zhao || mvir0!=Mvir_for_pe || z0!=z_for_pe){
+        std::cout<<"# Initializing physical density profile for "<<mvir0<<" at z="<<z0<<std::endl<<std::endl;
+        init_pe_rho_rdelta_phys_Zhao(mvir0,z0);
+    }
+    if(z0>z1 || z0>z2){
+        std::cout<<"# z0 should be smaller than z1 and z2\n";
+        return 0;
+    }
+    if(z2<z1){
+        std::cout<<"# z1 should be smaller than z2\n";
+        return 0;
+    }
+    /// Calculate the total mass evolution
+    double Mvir1=gsl_spline_eval(mah_Zhao_spline,z1,mah_Zhao_acc);
+    double Mvir2=gsl_spline_eval(mah_Zhao_spline,z2,mah_Zhao_acc);
+    //mofz=(Mvir1+Mvir2)/2.;
+
+    /*
+    double Rvir1=rvir_from_mvir(Mvir1,z1);
+    Rvir1=Rvir1/(1+z1);
+    double Rvir2=rvir_from_mvir(Mvir2,z2);
+    Rvir2=Rvir2/(1+z2);
+    */
+
+    double dMvir=Mvir1-Mvir2;
+
+    // I am assuming the same dlogMdloga for these objects, is this
+    //reasonable?! Should not be that wrong an assumption
+    double dlogMdloga=-(log10(Mvir1)-log10(Mvir2))/( log10(1+z1) - log10(1+z2) );
+
+    // First calculate concentration of these halos
+    double conc1=conc(Mvir1,z1);
+    double conc2=conc(Mvir2,z2);
+
+    // Get the c200_mean of these halos
+    double c200m_1=getcDel(conc1,z1,200.0);
+    double c200m_2=getcDel(conc2,z2,200.0);
+
+    // Normalization factor for the Rt-R200m relation
+    double norm_1=(1.+pow(Omega(z1)/Omega0,0.5))/2.;
+    double norm_2=(1.+pow(Omega(z2)/Omega0,0.5))/2.;
+
+    double c_caustic_1=c200m_1*norm_1*( 0.62+1.18*exp(-dlogMdloga/1.5) );
+    double c_caustic_2=c200m_2*norm_2*( 0.62+1.18*exp(-dlogMdloga/1.5) );
+
+    double Mcaustic1=Mvir1*mu(c_caustic_1)/mu(conc1);
+    double Mcaustic2=Mvir2*mu(c_caustic_2)/mu(conc2);
+
+    double dMcaustic=(Mcaustic1-Mcaustic2);
+    //fprintf(stderr,"# Mvir1:%e Mvir2:%e Mpe:%e dMvir:%e M4rs1:%e M4rs2:%e dM4rs:%e\n",Mvir1,Mvir2,Mpe,dMvir,M4rs1,M4rs2,dM4rs);
+
+    if(dMcaustic<0)
+        return -1.0;
+    else
+        return dMcaustic/dMvir;
+}
+
 
 double cosmology::dM4rs_dMvir(double mvir0,double z0,double z1,double z2){
     if(!bool_pe_rho_rdelta_phys_Zhao || mvir0!=Mvir_for_pe || z0!=z_for_pe){

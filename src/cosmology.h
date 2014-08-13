@@ -71,6 +71,8 @@ class cosmology
     gsl_spline *pe_rho_rdelta_phys_Zhao_spline;
     gsl_interp_accel *mah_Zhao_acc;
     gsl_spline *mah_Zhao_spline;
+    gsl_interp_accel *cvir_mah_Zhao_acc;
+    gsl_spline *cvir_mah_Zhao_spline;
     void init_pe_rho_rdelta_phys_Zhao(double M,double z=0.0);
     double Mvir_for_pe,z_for_pe;
 
@@ -107,6 +109,7 @@ class cosmology
         double getM4rs(double M, double z);
         double dM4rs_dMphys(double mvir0,double z0,double z1,double z2);
         double dM4rs_dMvir(double mvir0,double z0,double z1,double z2);
+        double dMcaustic_dMvir(double mvir0,double z0,double z1,double z2);
 
         // Concentration parameter wrapper
         double conc(double M,double z);
@@ -119,6 +122,8 @@ class cosmology
         void pevolve_fixed(double cdel,int opt,double z,double& cdelz,double& fdelz,double zstart=0.0);
         // Pseudo-evolution fraction
         double pe_fraction(double mvir0,double z0,double z1,double z2);
+        // Pseudo-evolution fraction, forward evolution
+        double pe_fraction_fwd(double mvir0,double z0,double z1);
 
         // Output Mass accretion history from Zhao et al.
         void mah_Zhao(double M,double z=0.0);
