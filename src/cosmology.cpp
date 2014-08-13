@@ -424,6 +424,7 @@ void cosmology::init_pe_rho_rdelta_phys_Zhao(double M,double z){
         fprintf(stdout,"%le %le %le\n",zred,mvir,cvir);
 	fill++;
     }
+    fclose(fp);
 
     // Shift the arrays yy and xx
     for(int i=0;i<fill;i++){
@@ -736,6 +737,7 @@ void cosmology::init_Zhao(double z){
         yy[fill]=xc;
         fill++;
     }
+    fclose(fname);
     zhao_acc = gsl_interp_accel_alloc ();
     zhao_spline = gsl_spline_alloc (gsl_interp_cspline, fill);
     gsl_spline_init (zhao_spline,xx,yy,fill);
