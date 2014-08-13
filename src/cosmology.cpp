@@ -254,6 +254,7 @@ void cosmology::init_gen(double z){
     double xM, xc;
     //while(1){
     while ( fscanf(mcinp,"%lg %lg",&xM,&xc)==2 ){
+	if(xc<0.0||fill>=200) break;
         xx[fill]=xM;
         yy[fill]=xc;
         fill++;
@@ -396,27 +397,37 @@ void cosmology::init_pe_rho_rdelta_phys_Zhao(double M,double z){
 
     double zred,mvir,cvir;
     double *xx,*yy,*zz,*xz,*cc;
-    int fill=125;
-    xx=new double [fill];
-    yy=new double [fill];
-    xz=new double [fill];
-    zz=new double [fill];
-    cc=new double [fill];
+    int fillmax=125;
+    xx=new double [fillmax];
+    yy=new double [fillmax];
+    xz=new double [fillmax];
+    zz=new double [fillmax];
+    cc=new double [fillmax];
 
     sprintf(fname,"%s/fileout.mvir.mah",dirname);
     FILE *fp=fopen(fname,"r");
-    for (int i=0;i<fill;i++){
+    for (int i=0;i<fillmax;i++){
         fscanf(fp,"%le %le %le",&zred,&mvir,&cvir);
+	if(cvir<0.0 || fill>=fillmax){
+	    break;
+	}
         /// Obtain Rvir from mvir, convert to physical
         double rvir=rvir_from_mvir(mvir, zred);
         rvir=rvir/(1+zred);
-        xx[fill-i-1]=rvir;
+        xx[fillmax-fill-1]=rvir;
         double rs=rvir/cvir;
-        yy[fill-i-1]=mvir/( 4*M_PI*pow(rs,3)*mu(cvir)*cvir*pow(1.+cvir,2) )*4*M_PI*rvir*rvir;
-        zz[i]=mvir;
-        xz[i]=zred;
-        cc[i]=cvir;
+        yy[fillmax-fill-1]=mvir/( 4*M_PI*pow(rs,3)*mu(cvir)*cvir*pow(1.+cvir,2) )*4*M_PI*rvir*rvir;
+        zz[fill]=mvir;
+        xz[fill]=zred;
+        cc[fill]=cvir;
         fprintf(stdout,"%le %le %le\n",zred,mvir,cvir);
+	fill++;
+    }
+
+    // Shift the arrays yy and xx
+    for(i=0;i<fill;i++){
+	yy[i]=yy[fillmax-fill+i];
+	xx[i]=yy[fillmax-fill+i];
     }
 
 
@@ -719,6 +730,7 @@ void cosmology::init_Zhao(double z){
     int fill=0;
     double xM, xc;
     while ( fscanf(mcinp,"%lg %lg",&xM,&xc)==2 ){
+	if(xc<0.0||fill>=200) break;
         xx[fill]=xM;
         yy[fill]=xc;
         fill++;
