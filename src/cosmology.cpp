@@ -737,7 +737,7 @@ void cosmology::init_Zhao(double z){
         yy[fill]=xc;
         fill++;
     }
-    fclose(fname);
+    fclose(mcinp);
     zhao_acc = gsl_interp_accel_alloc ();
     zhao_spline = gsl_spline_alloc (gsl_interp_cspline, fill);
     gsl_spline_init (zhao_spline,xx,yy,fill);
