@@ -406,6 +406,7 @@ void cosmology::init_pe_rho_rdelta_phys_Zhao(double M,double z){
 
     sprintf(fname,"%s/fileout.mvir.mah",dirname);
     FILE *fp=fopen(fname,"r");
+    int fill=0;
     for (int i=0;i<fillmax;i++){
         fscanf(fp,"%le %le %le",&zred,&mvir,&cvir);
 	if(cvir<0.0 || fill>=fillmax){
@@ -425,7 +426,7 @@ void cosmology::init_pe_rho_rdelta_phys_Zhao(double M,double z){
     }
 
     // Shift the arrays yy and xx
-    for(i=0;i<fill;i++){
+    for(int i=0;i<fill;i++){
 	yy[i]=yy[fillmax-fill+i];
 	xx[i]=yy[fillmax-fill+i];
     }
