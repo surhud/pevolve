@@ -588,7 +588,7 @@ double cosmology::dM4rs_dMvir(double mvir0,double z0,double z1,double z2){
     Rvir2=Rvir2/(1+z2);
 
     /// Calculate the pseudo-evolution component
-    double Mpe=gsl_spline_eval_integ(pe_rho_rdelta_phys_Zhao_spline,Rvir2,Rvir1,pe_rho_rdelta_phys_Zhao_acc);
+    //double Mpe=gsl_spline_eval_integ(pe_rho_rdelta_phys_Zhao_spline,Rvir2,Rvir1,pe_rho_rdelta_phys_Zhao_acc);
     //std::cout<<"DEBUG: "<<Mpe<<" "<<Mvir2-Mvir1<<std::endl;
     
     double dMvir=Mvir1-Mvir2;
