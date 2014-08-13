@@ -428,7 +428,7 @@ void cosmology::init_pe_rho_rdelta_phys_Zhao(double M,double z){
     // Shift the arrays yy and xx
     for(int i=0;i<fill;i++){
 	yy[i]=yy[fillmax-fill+i];
-	xx[i]=yy[fillmax-fill+i];
+	xx[i]=xx[fillmax-fill+i];
     }
 
 
