@@ -564,12 +564,13 @@ double cosmology::dMcaustic_dMvir(double mvir0,double z0,double z1,double z2){
     double c200m_1=getcDel(conc1,z1,200.0);
     double c200m_2=getcDel(conc2,z2,200.0);
 
-    // Normalization factor for the Rt-R200m relation
-    double norm_1=(1.+pow(Omega(z1)/Omega0,0.5))/2.;
-    double norm_2=(1.+pow(Omega(z2)/Omega0,0.5))/2.;
+    // Normalization factor for the Rt-R200m relation, based on Benedikt's new
+    // fitting formulae
+    double norm_1=0.42+0.40*Omega(z1);
+    double norm_2=0.42+0.40*Omega(z2);
 
-    double c_caustic_1=c200m_1*norm_1*( 0.62+1.18*exp(-dlogMdloga_1/1.5) );
-    double c_caustic_2=c200m_2*norm_2*( 0.62+1.18*exp(-dlogMdloga_2/1.5) );
+    double c_caustic_1=c200m_1*norm_1*( 1.+2.15*exp(-dlogMdloga_1/1.96) );
+    double c_caustic_2=c200m_2*norm_2*( 1.+2.15*exp(-dlogMdloga_2/1.96) );
 
     double Mcaustic1=Mvir1*mu(c_caustic_1)/mu(conc1);
     double Mcaustic2=Mvir2*mu(c_caustic_2)/mu(conc2);
