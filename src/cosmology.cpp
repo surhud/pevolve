@@ -533,7 +533,17 @@ double cosmology::dMcaustic_dMvir(double mvir0,double z0,double z1,double z2){
     }
     /// Calculate the total mass evolution
     double Mvir1=gsl_spline_eval(mah_Zhao_spline,z1,mah_Zhao_acc);
+    double z1step=pow(10.,log10(1.+z1)+0.2)-1.0;
+    double Mvir1_step=gsl_spline_eval(mah_Zhao_spline,z1step,mah_Zhao_acc);
+    double dlogMdloga_1=-(log10(Mvir1)-log10(Mvir1_step))/( log10(1.+z1) - log10(1.+z1step) );
+
     double Mvir2=gsl_spline_eval(mah_Zhao_spline,z2,mah_Zhao_acc);
+    double z2step=pow(10.,log10(1.+z2)+0.2)-1.0;
+    double Mvir2_step=gsl_spline_eval(mah_Zhao_spline,z2step,mah_Zhao_acc);
+    double dlogMdloga_2=-(log10(Mvir2)-log10(Mvir2_step))/( log10(1.+z2) - log10(1.+z2step) );
+
+    //printf("z1:%e z1step:%e z2:%e z2step:%e\n",z1,z1step,z2,z2step);
+
     //mofz=(Mvir1+Mvir2)/2.;
 
     /*
@@ -545,13 +555,10 @@ double cosmology::dMcaustic_dMvir(double mvir0,double z0,double z1,double z2){
 
     double dMvir=Mvir1-Mvir2;
 
-    // I am assuming the same dlogMdloga for these objects, is this
-    //reasonable?! Should not be that wrong an assumption
-    double dlogMdloga=-(log10(Mvir1)-log10(Mvir2))/( log10(1+z1) - log10(1+z2) );
 
     // First calculate concentration of these halos
-    double conc1=conc(Mvir1,z1);
-    double conc2=conc(Mvir2,z2);
+    double conc1= gsl_spline_eval(cvir_mah_Zhao_spline,z1,cvir_mah_Zhao_acc); //conc(Mvir1,z1);
+    double conc2= gsl_spline_eval(cvir_mah_Zhao_spline,z2,cvir_mah_Zhao_acc); //conc(Mvir2,z2);
 
     // Get the c200_mean of these halos
     double c200m_1=getcDel(conc1,z1,200.0);
@@ -561,11 +568,12 @@ double cosmology::dMcaustic_dMvir(double mvir0,double z0,double z1,double z2){
     double norm_1=(1.+pow(Omega(z1)/Omega0,0.5))/2.;
     double norm_2=(1.+pow(Omega(z2)/Omega0,0.5))/2.;
 
-    double c_caustic_1=c200m_1*norm_1*( 0.62+1.18*exp(-dlogMdloga/1.5) );
-    double c_caustic_2=c200m_2*norm_2*( 0.62+1.18*exp(-dlogMdloga/1.5) );
+    double c_caustic_1=c200m_1*norm_1*( 0.62+1.18*exp(-dlogMdloga_1/1.5) );
+    double c_caustic_2=c200m_2*norm_2*( 0.62+1.18*exp(-dlogMdloga_2/1.5) );
 
     double Mcaustic1=Mvir1*mu(c_caustic_1)/mu(conc1);
     double Mcaustic2=Mvir2*mu(c_caustic_2)/mu(conc2);
+    //printf("dlogMdloga_1:%e log10 Mvir1:%e z1:%e Mcaustic1:%e dlogMdloga_1:%e log10 Mvir2:%e z2:%e Mcaustic2:%e\n",dlogMdloga_1,log10(Mvir1),z1,Mcaustic1,dlogMdloga_2,log10(Mvir2),z2,Mcaustic2);
 
     double dMcaustic=(Mcaustic1-Mcaustic2);
     //fprintf(stderr,"# Mvir1:%e Mvir2:%e Mpe:%e dMvir:%e M4rs1:%e M4rs2:%e dM4rs:%e\n",Mvir1,Mvir2,Mpe,dMvir,M4rs1,M4rs2,dM4rs);
