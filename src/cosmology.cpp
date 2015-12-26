@@ -518,6 +518,39 @@ double cosmology::pe_fraction(double mvir0,double z0,double z1,double z2){
     return Mpe/(Mvir1-Mvir2);
 }
 
+double cosmology::Mcaustic_from_Mvir(double mvir0,double z0){
+    if(!bool_pe_rho_rdelta_phys_Zhao || mvir0!=Mvir_for_pe || z0!=z_for_pe){
+        std::cout<<"# Initializing physical density profile for "<<mvir0<<" at z="<<z0<<std::endl<<std::endl;
+        init_pe_rho_rdelta_phys_Zhao(mvir0,z0);
+    }
+
+    double eps=1.0e-2;
+    double z1=z0*(1.+eps);
+
+    /// Calculate the total mass evolution
+    double Mvir1=gsl_spline_eval(mah_Zhao_spline,z1,mah_Zhao_acc);
+    double z1step=pow(10.,log10(1.+z1)+0.2)-1.0;
+    double Mvir1_step=gsl_spline_eval(mah_Zhao_spline,z1step,mah_Zhao_acc);
+    double dlogMdloga_1=-(log10(Mvir1)-log10(Mvir1_step))/( log10(1.+z1) - log10(1.+z1step) );
+
+    // First calculate concentration of these halos
+    double conc1= gsl_spline_eval(cvir_mah_Zhao_spline,z1,cvir_mah_Zhao_acc); //conc(Mvir1,z1);
+
+    // Get the c200_mean of these halos
+    double c200m_1=getcDel(conc1,z1,200.0);
+
+    // Normalization factor for the Rt-R200m relation, based on Benedikt's new
+    // fitting formulae
+    double norm_1=0.42+0.40*Omega(z1);
+
+    double c_caustic_1=c200m_1*norm_1*( 1.+2.15*exp(-dlogMdloga_1/1.96) );
+
+    double Mcaustic1=Mvir1*mu(c_caustic_1)/mu(conc1);
+
+    return Mcaustic1;
+}
+
+
 double cosmology::dMcaustic_dMvir(double mvir0,double z0,double z1,double z2){
     if(!bool_pe_rho_rdelta_phys_Zhao || mvir0!=Mvir_for_pe || z0!=z_for_pe){
         std::cout<<"# Initializing physical density profile for "<<mvir0<<" at z="<<z0<<std::endl<<std::endl;

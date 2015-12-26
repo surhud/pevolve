@@ -368,6 +368,21 @@ redshifts z1 and z2, z0<z1<z2 for a halo of mass mvir0 at redshift z0
     >>> a.dM4rs_dMphys(1.E11,0.0,1.0,2.0)
 "
 
+%feature("docstring") cosmology::Mcaustic_from_Mvir 
+"Output Mcaustic for a given Mvir at redshift z0
+
+:Parameters:
+
+-   mvir0 : Virial mass in hinv Msun
+-   z0 : Redshift at which the mvir0 is identified
+    
+:Examples:
+
+    >>> import cosmology as cc
+    >>> a = cc.cosmology(0.27, 0.73, 0.047, 0.7, 2.726, 0.82, 0.95)
+    >>> a.Mcaustic_from_Mvir(1.E11,0.0)
+"
+
 %feature("docstring") cosmology::dMcaustic_dMvir 
 "Output the ratio of the growth in Mcaustic and Mvir between
 redshifts z1 and z2, z0<z1<z2 for a halo of mass mvir0 at redshift z0 

@@ -110,6 +110,7 @@ class cosmology
         double dM4rs_dMphys(double mvir0,double z0,double z1,double z2);
         double dM4rs_dMvir(double mvir0,double z0,double z1,double z2);
         double dMcaustic_dMvir(double mvir0,double z0,double z1,double z2);
+        double Mcaustic_from_Mvir(double mvir0,double z0);
 
         // Concentration parameter wrapper
         double conc(double M,double z);
