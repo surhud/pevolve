@@ -9,7 +9,7 @@ from distutils.core import setup, Extension
 cosmology_module = Extension('_cosmology',
                            sources=['src/cosmology.i', 'src/cosmology.cpp'],
                            swig_opts=["-c++"],
-                           libraries=['m'],
+                           libraries=['m','gsl','gslcblas'],
                            )
 
 setup (name        = 'pevolve',
